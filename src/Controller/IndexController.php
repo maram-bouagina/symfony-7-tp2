@@ -4,13 +4,17 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route; 
+use Symfony\Component\Routing\Attribute\Route;
 
 class IndexController extends AbstractController
 {
-    #[Route('/{name}', name: 'greeting')] 
-    public function home(string $name): Response
+    #[Route('/', name: 'home')]
+    public function home(): Response
     {
-        return $this->render('index.html.twig', ['name' => $name]);
+        $articles = ['Article1', 'Article 2', 'Article 3'];
+        
+        return $this->render('articles/index.html.twig', [
+            'articles' => $articles
+        ]);
     }
 }
